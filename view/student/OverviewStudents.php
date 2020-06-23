@@ -5,7 +5,7 @@ if(isset($_POST['delete']))
 }
 if(isset($_POST['change']))
 {
-    EditStudent(val($_POST['changedname']) , $_POST['change']);
+    EditStudent(val($_POST['changedname']) ,$_POST['changedphonenumber'], $_POST['change']);
 }
 ?>
 </div> 
@@ -13,6 +13,7 @@ if(isset($_POST['change']))
 <div class="row border-rounded border mx-auto col-8">
                 <h1 class="col-12"> <?= $row['student_id']; ?> </h1>
                 <h2 class="col-12"> <?= $row['student_name']; ?></h2>
+                <h3 class="col-12">phone number: <?= $row['phone_number']; ?></h3>
         		<div class="btn dropdown show">
 			        <button class="dropdown-toggle btn btn-danger" style="font-size: 1em;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="<?= URL ?>student/index">Verwijder</button>
 				        <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
@@ -31,10 +32,13 @@ if(isset($_POST['change']))
                             <form method='post' action=''>  
                             <h2> naam: </h2> 
                              <input type="text" name="changedname"  class="col-10 border rounded">
+                             <h2> Telefoon nummer: </h2>
+                            <input type="number" name="changedphonenumber" min="0" max="999999999999999">
                              </br>
                             <button type="submit" value="<?= $row['student_id']; ?>" name="change" class='btn btn-success my-2'> Submit </button>
                             </form>
                         </div>
                 </div>
-    </div> <?php } ?>
+    </div>
+     <?php } ?>
 </div>

@@ -69,4 +69,5 @@ Paard/pony
     <input type="submit" name="submit" value="submit" class="btn-success btn col-3 float-left m-1"> <h3 class="text-danger">* <?= $error; ?> </h3>
 </form>
     </div>
+    </div>
 <?php $i++; } ?>

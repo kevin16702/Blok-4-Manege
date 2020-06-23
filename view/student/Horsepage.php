@@ -3,13 +3,13 @@
 $error = "";
 if(isset($_POST['submit']))
 {
-    if(empty($_POST['name']) || empty($_POST['height']))
+    if(empty($_POST['name']) || empty($_POST['height']) || empty($_POST['race']) || empty($_POST['age']))
     {
         $error = "niet alles is ingevult";
     }
     else
     {
-        CreateHorse(val($_POST['name']), $_POST['height']);
+        CreateHorse(val($_POST['name']), $_POST['height'], val($_POST['race']), $_POST['age']);
     }
 }
 if(isset($_POST['delete']))
@@ -18,18 +18,21 @@ if(isset($_POST['delete']))
 }
 if(isset($_POST['change']))
 {
-    EditHorse(val($_POST['changedname']), val($_POST['changedheight']) , $_POST['change']);
+    EditHorse(val($_POST['changedname']), $_POST['changedheight'] ,val($_POST['changedrace']), $_POST['changedage'], $_POST['change']);
 }
 ?>
 <h1> Toevoegen van Paarden en Ponies </h1>
 <form action='' method="post" class="d-inline-block w-100"> 
     <h2> naam: </h2> 
-    <input type="text" name="name"  class="col-1 float-left border rounded"> <h3 class="text-danger">*</h3>
+    <input type="text" name="name"  class="col-1 border rounded float-left"> <h3 class="text-danger">*</h3>
     <h2> hoogte: </h2> 
-    <input type="number" name="height" min="70" max="200" step="1" class="col-1 float-left border rounded">  
-    <div class="row"> <p class="col-1"> cm </p> <h3 class="col-1 p-0 m-0 text-danger"> *</h3> </div>
+    <input type="number" name="height" min="70" max="200" step="1" class="col-1 border rounded float-left"> <div class="row"> <p class=" p-0 m-0"> cm </p> <h3 class=" p-0 m-0 text-danger"> *</h3> </div>
+    <h2> ras: </h2> 
+    <input type="text" name="race"  class="col-1 border rounded float-left"> <h3 class="text-danger">*</h3>
+    <h2> Leeftijd </h2> 
+    <input type="number" name="age" min="1" max="30" step="1" class="col-1 border rounded float-left"> <h3 class="text-danger">*</h3>
     </br>
-    <input type="submit" name="submit" value="submit" class="btn-success btn col-3 float-left m-1"> <h3 class="text-danger">* <?= $error; ?> </h3>
+    <input type="submit" name="submit" value="submit" class="btn-success btn col-3 m-1 float-left"> <h3 class="text-danger">* <?= $error; ?> </h3>
 </form>
 </div> 
 <div class="row border-rounded border mx-auto col-8">
@@ -38,6 +41,8 @@ if(isset($_POST['change']))
     <div class=" mx-5 my-2 border-rounded border col-3">
     <h2> <?= $row['name']; ?> </h2>
         Hoogte: <?= $row['height']; ?> cm</br>
+        Ras: <?= $row['race']; ?> </br>
+        Leeftijd: <?= $row['age']; ?> </br>
         Soort: <?php if($row['height'] < 147.5)
         {
             echo "pony";
@@ -66,12 +71,16 @@ if(isset($_POST['change']))
                              <input type="text" name="changedname"  class="col-5 border rounded">
                              </br>
                              <h2 class="mr-auto"> hoogte: </h2> 
-                            <input type="number" name="changedheight" min="70" max="200" step="1" class="col-5 float-left border rounded">  
-                            <div class="row"> <p class="col-1"> cm </p>
-                            </div>
+                            <input type="number" name="changedheight" min="70" max="200" step="1" class="col-5 border rounded">cm
+                            </br>
+                            <h2> ras: </h2> 
+                            <input type="text" name="changedrace"  class="col-4 border rounded">
+                            <h2> Leeftijd </h2> 
+                            <input type="number" name="changedage" min="1" max="30" step="1" class="col-5 border rounded">
+                            </br> 
                             <button type="submit" value="<?= $row['id']; ?>" name="change" class='btn btn-success'> Submit </button>
                             </form>
                         </div>
-                </div>
-    </div> <?php } ?>
+                </div>      
+          </div> <?php } ?>
 </div>

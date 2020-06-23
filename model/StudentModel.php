@@ -47,12 +47,12 @@ function getAllhorses()
 	return $query->fetchAll();
 }
 
-function CreateHorse($name, $height)
+function CreateHorse($name, $height, $race, $age)
 {
 	$db = openDatabaseConnection();
-	$sql = "INSERT INTO horses (name, height) VALUES (?, ?)";
+	$sql = "INSERT INTO horses (name, height, race, age) VALUES (?, ?, ?, ?)";
 	$query = $db->prepare($sql);
-	$query->execute([$name, $height]);
+	$query->execute([$name, $height, $race, $age]);
 
 	$db = null;
 	header("Refresh:0");
@@ -80,33 +80,33 @@ function DeleteStudent($id)
 	header("Refresh:0");
 }
 
-function EditHorse($name, $height, $id)
+function EditHorse($name, $height, $race, $age, $id)
 {
 	$db = openDatabaseConnection();
-	$sql = "UPDATE horses SET name = ?, height = ? WHERE id = ?";
+	$sql = "UPDATE horses SET name = ?, height = ?, race = ?, age = ? WHERE id = ?";
 	$query = $db->prepare($sql);
-	$query->execute([$name, $height, $id]);
+	$query->execute([$name, $height, $race, $age, $id]);
 
 	$db = null;
 	header("Refresh:0");
 }
 
-function EditStudent($name, $id)
+function EditStudent($name, $phonenumber, $id)
 {
 	$db = openDatabaseConnection();
-	$sql = "UPDATE student SET student_name = ? WHERE student_id = ?";
+	$sql = "UPDATE student SET student_name = ?, phone_number = ? WHERE student_id = ?";
 	$query = $db->prepare($sql);
-	$query->execute([$name, $id]);
+	$query->execute([$name, $phonenumber, $id]);
 
 	$db = null;
 	header("Refresh:0");
 }
-function RegisterStudent($name)
+function RegisterStudent($name, $phonenumber)
 {
 	$db = openDatabaseConnection();
-	$sql = "INSERT INTO student (student_name) VALUES (?)";
+	$sql = "INSERT INTO student (student_name, phone_number) VALUES (?, ?)";
 	$query = $db->prepare($sql);
-	$query->execute([$name]);
+	$query->execute([$name, $phonenumber]);
 
 	$db = null;
 	header("Refresh:0");
