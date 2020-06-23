@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 22, 2020 at 07:40 AM
+-- Generation Time: Jun 23, 2020 at 07:57 AM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.11
 
@@ -31,16 +31,21 @@ SET time_zone = "+00:00";
 CREATE TABLE `horses` (
   `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `height` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+  `height` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `race` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `age` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `horses`
 --
 
-INSERT INTO `horses` (`id`, `name`, `height`) VALUES
-(14, 'jan', '102'),
-(15, 'piet', '144');
+INSERT INTO `horses` (`id`, `name`, `height`, `race`, `age`) VALUES
+(14, 'jan', '102', '', ''),
+(15, 'piet', '144', '', ''),
+(17, 'kevin', '190', '', ''),
+(18, 'kevin', '190', 'arabier', '20'),
+(19, 'kevin', '190', 'arabier', '20');
 
 -- --------------------------------------------------------
 
@@ -57,6 +62,14 @@ CREATE TABLE `reservation` (
   `Horse` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `reservation`
+--
+
+INSERT INTO `reservation` (`id`, `name`, `Time`, `Length`, `Price`, `Horse`) VALUES
+(5, 'pietje de groot', '12:23:00', 6, '330', 'piet'),
+(6, 'piet hein', '09:00:00', 5, '275', 'jan');
+
 -- --------------------------------------------------------
 
 --
@@ -65,16 +78,19 @@ CREATE TABLE `reservation` (
 
 CREATE TABLE `student` (
   `student_id` int(11) NOT NULL,
-  `student_name` varchar(255) NOT NULL
+  `student_name` varchar(255) NOT NULL,
+  `phone_number` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`student_id`, `student_name`) VALUES
-(99041393, 'kevin bouwmeester'),
-(99041394, 'Ben Vreemdeling');
+INSERT INTO `student` (`student_id`, `student_name`, `phone_number`) VALUES
+(99041394, '', '19029019023'),
+(99041397, 'pietje de groot', ''),
+(99041398, 'piet hein', ''),
+(99041399, '&lt;script&gt; alert(\'hallo\') &lt;/script&gt;', '');
 
 --
 -- Indexes for dumped tables
@@ -106,19 +122,19 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `horses`
 --
 ALTER TABLE `horses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99041397;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99041400;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
