@@ -42,3 +42,19 @@ function UserPage()
 	$value = getAllStudents();
 	render("student/UserPage", $value);
 }
+function deletehorse()
+{
+	HorseDelete($_POST['delete']);
+	HorsePage();
+}
+
+function createhorse()
+{
+	RegisterHorse(val($_POST['name']), $_POST['height'], val($_POST['race']), $_POST['age']);
+	HorsePage();
+}
+function changehorse()
+{
+	HorseEdit(val($_POST['changedname']), $_POST['changedheight'] ,val($_POST['changedrace']), $_POST['changedage'], $_POST['change']);
+	HorsePage();
+}

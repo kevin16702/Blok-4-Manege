@@ -1,28 +1,6 @@
-<?php
-
-$error = "";
-if(isset($_POST['submit']))
-{
-    if(empty($_POST['name']) || empty($_POST['height']) || empty($_POST['race']) || empty($_POST['age']))
-    {
-        $error = "niet alles is ingevult";
-    }
-    else
-    {
-        CreateHorse(val($_POST['name']), $_POST['height'], val($_POST['race']), $_POST['age']);
-    }
-}
-if(isset($_POST['delete']))
-{
-    DeleteHorse($_POST['delete']);
-}
-if(isset($_POST['change']))
-{
-    EditHorse(val($_POST['changedname']), $_POST['changedheight'] ,val($_POST['changedrace']), $_POST['changedage'], $_POST['change']);
-}
-?>
+<?php $error = RegisterHorse($name, $height, $race, $age);?>
 <h1> Toevoegen van Paarden en Ponies </h1>
-<form action='' method="post" class="d-inline-block w-100"> 
+<form action='createhorse' method="post" class="d-inline-block w-100"> 
     <h2> naam: </h2> 
     <input type="text" name="name"  class="col-1 border rounded float-left"> <h3 class="text-danger">*</h3>
     <h2> hoogte: </h2> 
@@ -56,7 +34,7 @@ if(isset($_POST['change']))
 			        <button class="dropdown-toggle btn btn-danger" style="font-size: 1em;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="<?= URL ?>student/index">Verwijder</button>
 				        <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
                             weet u het zeker?
-                            <form method='post' action=''>
+                            <form method='post' action='deletehorse'>
                             <button class="btn col-10 btn-danger my-2" name="delete" type="submit" value=<?= $row['id'];?>>Ja</button></form>
                             <button class="col-10 btn-secondary btn"> Nee </button>
                         </div>
@@ -66,7 +44,7 @@ if(isset($_POST['change']))
 			        <button class="dropdown-toggle btn btn-warning" style="font-size: 1em;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="<?= URL ?>student/index">Bewerken</button>
 				        <div class="dropdown-menu text-left" style="width:300px" aria-labelledby="dropdownMenuLink">          
                             Bewerken
-                            <form method='post' action=''>  
+                            <form method='post' action='changehorse'>  
                             <h2> naam: </h2> 
                              <input type="text" name="changedname"  class="col-5 border rounded" value="<?= $row['name'];?>">
                              </br>

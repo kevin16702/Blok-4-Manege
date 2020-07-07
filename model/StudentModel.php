@@ -47,18 +47,27 @@ function getAllhorses()
 	return $query->fetchAll();
 }
 
-function CreateHorse($name, $height, $race, $age)
+function RegisterHorse($name, $height, $race, $age)
 {
+	if(empty($_POST['name']) || empty($_POST['height']) || empty($_POST['race']) || empty($_POST['age']))
+	{
+		$error = "niet alles is ingevult";
+		return $error;
+	}
+	else
+	{
 	$db = openDatabaseConnection();
 	$sql = "INSERT INTO horses (name, height, race, age) VALUES (?, ?, ?, ?)";
 	$query = $db->prepare($sql);
 	$query->execute([$name, $height, $race, $age]);
 
 	$db = null;
-	header("Refresh:0");
+	$error = "";
+	return $error;
+	}
 }
 
-function DeleteHorse($id)
+function HorseDelete($id)
 {
 	$db = openDatabaseConnection();
 	$sql = "DELETE FROM horses WHERE id = ?";
@@ -66,7 +75,6 @@ function DeleteHorse($id)
 	$query->execute([$id]);
 
 	$db = null; 
-	header("Refresh:0");
 }
 
 function DeleteStudent($id)
@@ -80,7 +88,7 @@ function DeleteStudent($id)
 	header("Refresh:0");
 }
 
-function EditHorse($name, $height, $race, $age, $id)
+function HorseEdit($name, $height, $race, $age, $id)
 {
 	$db = openDatabaseConnection();
 	$sql = "UPDATE horses SET name = ?, height = ?, race = ?, age = ? WHERE id = ?";
@@ -88,7 +96,6 @@ function EditHorse($name, $height, $race, $age, $id)
 	$query->execute([$name, $height, $race, $age, $id]);
 
 	$db = null;
-	header("Refresh:0");
 }
 
 function EditStudent($name, $phonenumber, $id)
