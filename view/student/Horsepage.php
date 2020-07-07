@@ -68,15 +68,15 @@ if(isset($_POST['change']))
                             Bewerken
                             <form method='post' action=''>  
                             <h2> naam: </h2> 
-                             <input type="text" name="changedname"  class="col-5 border rounded">
+                             <input type="text" name="changedname"  class="col-5 border rounded" value="<?= $row['name'];?>">
                              </br>
                              <h2 class="mr-auto"> hoogte: </h2> 
-                            <input type="number" name="changedheight" min="70" max="200" step="1" class="col-5 border rounded">cm
+                            <input type="number" name="changedheight" min="70" max="200" step="1" class="col-5 border rounded" value="<?= $row['height'];?>">cm
                             </br>
                             <h2> ras: </h2> 
-                            <input type="text" name="changedrace"  class="col-4 border rounded">
+                            <input type="text" name="changedrace"  class="col-4 border rounded" value="<?= $row['race'];?>">
                             <h2> Leeftijd </h2> 
-                            <input type="number" name="changedage" min="1" max="30" step="1" class="col-5 border rounded">
+                            <input type="number" name="changedage" min="1" max="30" step="1" class="col-5 border rounded" value="<?= $row['age'];?>">
                             </br> 
                             <button type="submit" value="<?= $row['id']; ?>" name="change" class='btn btn-success'> Submit </button>
                             </form>

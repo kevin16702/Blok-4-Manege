@@ -125,12 +125,13 @@ function MakeReservation($name, $time, $length, $horse)
 }
 
 
-function ChangeReservation($name, $time, $length, $price, $horse, $id) 
+function ChangeReservation($name, $time, $length, $horse, $id) 
 {
 	$db = openDatabaseConnection();
-	$sql = "UPDATE reservation SET Time = ?, Length = ?, Price = ?, Horse = ? WHERE id = ?";
+	$price = 55 * $length;
+	$sql = "UPDATE reservation SET name = ?, Time = ?, Length = ?, Price= ?, Horse = ? WHERE id = ?";
 	$query = $db->prepare($sql);
-	$query->execute([$time, $length, $price, $horse, $id]);
+	$query->execute([$name, $time, $length, $price, $horse, $id]);
 
 	$db = null;
 	header("Refresh:0");

@@ -31,9 +31,9 @@ if(isset($_POST['change']))
                             Bewerken
                             <form method='post' action=''>  
                             <h2> naam: </h2> 
-                             <input type="text" name="changedname"  class="col-10 border rounded">
+                             <input type="text" name="changedname"  class="col-10 border rounded" value="<?= $row['student_name']?>">
                              <h2> Telefoon nummer: </h2>
-                            <input type="number" name="changedphonenumber" min="0" max="999999999999999">
+                            <input type="number" name="changedphonenumber" min="0" max="999999999999999" value=<?= $row["phone_number"]?>>
                              </br>
                             <button type="submit" value="<?= $row['student_id']; ?>" name="change" class='btn btn-success my-2'> Submit </button>
                             </form>

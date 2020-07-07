@@ -10,7 +10,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 	
 </head>
-<body>
+<body style="overflow:scroll; display:flex;flex-direction:column">
 	<nav class="col-2 h-100" style="position:fixed; overflow-x:hidden; z-index:1; background-color: #d1d1d1">
 	<ul style="list-style:none">
 		<li class="btn"><h1><a href="<?= URL ?>home/index">Home</a></h1></li>

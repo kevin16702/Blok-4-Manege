@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 23, 2020 at 07:57 AM
+-- Generation Time: Jul 07, 2020 at 09:39 AM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.11
 
@@ -41,7 +41,7 @@ CREATE TABLE `horses` (
 --
 
 INSERT INTO `horses` (`id`, `name`, `height`, `race`, `age`) VALUES
-(14, 'jan', '102', '', ''),
+(14, 'henkie', '102', '', ''),
 (15, 'piet', '144', '', ''),
 (17, 'kevin', '190', '', ''),
 (18, 'kevin', '190', 'arabier', '20'),
@@ -67,8 +67,9 @@ CREATE TABLE `reservation` (
 --
 
 INSERT INTO `reservation` (`id`, `name`, `Time`, `Length`, `Price`, `Horse`) VALUES
-(5, 'pietje de groot', '12:23:00', 6, '330', 'piet'),
-(6, 'piet hein', '09:00:00', 5, '275', 'jan');
+(5, 'piet hein', '12:23:00', 3, '165', 'henk'),
+(6, '', '09:00:00', 5, '275', ''),
+(7, 'pietje de groot', '12:13:00', 1, '55', '');
 
 -- --------------------------------------------------------
 
@@ -90,7 +91,7 @@ INSERT INTO `student` (`student_id`, `student_name`, `phone_number`) VALUES
 (99041394, '', '19029019023'),
 (99041397, 'pietje de groot', ''),
 (99041398, 'piet hein', ''),
-(99041399, '&lt;script&gt; alert(\'hallo\') &lt;/script&gt;', '');
+(99041400, 'henk', '190839382');
 
 --
 -- Indexes for dumped tables
@@ -128,13 +129,13 @@ ALTER TABLE `horses`
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99041400;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99041401;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
